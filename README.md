@@ -217,3 +217,24 @@ Görselleştirmede:
 🔴 Kırmızı Nokta → Hedef
 
 🔵 Mavi Çizgi → Hesaplanan Yol
+
+## 🙏 Kaynaklar ve Teşekkür
+
+Bu projede kullanılan Artificial Bee Colony (ABC) optimizasyon algoritmasının temel Python implementasyonu geliştirilirken, Erciyes Üniversitesi tarafından yayınlanan ABC Algoritması projesinden yararlanılmıştır.
+
+ABC algoritmasının temel yapısı, sınıf organizasyonu ve optimizasyon mekanizması aşağıdaki kaynaktan incelenmiş ve proje gereksinimlerine uygun şekilde uyarlanmıştır:
+
+https://abc.erciyes.edu.tr/
+
+Projede kullanılan ABC bileşenleri, hibrit yol planlama sistemine entegre edilerek A* algoritması ile birlikte çalışacak şekilde düzenlenmiştir. Mevcut kod yapısı üzerinde çeşitli geliştirmeler yapılarak ceza bölgeleri, dönüş maliyetleri ve yol optimizasyonu süreçleri sisteme eklenmiştir.
+
+Bu çalışma, ilgili açık kaynak akademik çalışmalardan yararlanılarak geliştirilmiş olup, özgün katkı olarak ABC ve A* algoritmalarının hibrit şekilde kullanıldığı yol planlama yaklaşımını içermektedir.
+
+ABC algoritmasıyla ilgili çalışmaları ve kaynak kodları paylaşan Erciyes Üniversitesi araştırma ekibine teşekkür ederiz.
+
+
+_Not:
+Bu projede kullanılan ABC algoritmasının temel Python implementasyonu
+https://abc.erciyes.edu.tr/ adresinde yayınlanan açık kaynak çalışmalardan
+yararlanılarak projeye entegre edilmiştir. Yol planlama, ceza bölgeleri,
+dönüş maliyetleri ve A* entegrasyonu proje kapsamında geliştirilmiştir._
