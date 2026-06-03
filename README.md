@@ -8,27 +8,21 @@ Sistem, harici bir metin dosyasından okunan haritalar üzerinde engellerden ka�
 
 Bu çalışma özellikle;
 
--İnsansız Hava Araçları (İHA)
-
--Otonom Kara Araçları
-
--Robotik Navigasyon Sistemleri
-
--Karar Destek Sistemleri
-
--Arama Kurtarma Operasyonları
-
+- Otonom Kara Araçları 
+- Robotik Navigasyon Sistemleri 
+- Karar Destek Sistemleri  
+- Arama Kurtarma Operasyonları
+  
 gibi uygulamalar için geliştirilmiştir.
 
 ## Projenin Amacı
 
 Klasik A* algoritmaları genellikle en kısa yolu bulmaya odaklanır. Ancak gerçek dünya uygulamalarında:
 
- Riskli bölgelerden uzak durulması,
-
- Gereksiz manevraların azaltılması,
- 
- Daha güvenli rotaların oluşturulması
+- Riskli bölgelerden kaçınmak  
+- Daha güvenli rotalar oluşturmak  
+- Gereksiz manevraları azaltmak  
+- Daha düşük maliyetli yollar üretmek  
 
 gibi kriterler de önemlidir.
 
@@ -41,24 +35,19 @@ Artificial Bee Colony algoritması, bal arılarının besin kaynağı arama davr
 
 Sistemde:
 
--İşçi Arılar (Employed Bees)
-
--Gözlemci Arılar (Onlooker Bees)
-
--Kaşif Arılar (Scout Bees)
+- İşçi Arılar (Employed Bees)  
+- Gözlemci Arılar (Onlooker Bees)  
+- Kaşif Arılar (Scout Bees)  
 
 kullanılarak harita üzerinde ceza uygulanacak bölgeler optimize edilir.
 
 
 ABC algoritmasının amacı:
 
--Yol maliyetini azaltmak
-
--Gereksiz dönüşleri azaltmak
-
--Riskli bölgelerden kaçınmak
-
--Daha uygun rotalar oluşturmak
+- Yol maliyetini azaltmak  
+- Riskli bölgeleri belirlemek  
+- Daha güvenli rota üretmek  
+- Gereksiz yön değişimlerini azaltmak  
 
 olarak belirlenmiştir.
 
@@ -68,11 +57,9 @@ A* algoritması başlangıç ve hedef noktaları arasında en uygun yolu bulmak 
 
 Her düğüm aşağıdaki maliyet bilgilerini içerir:
 
- **g(n):** Başlangıçtan mevcut düğüme kadar olan gerçek maliyet
-
- **h(n):** Hedefe olan tahmini maliyet
- 
- **f(n):** Toplam maliyet
+- **g(n):** Başlangıçtan düğüme kadar olan gerçek maliyet  
+- **h(n):** Hedefe olan tahmini maliyet  
+- **f(n):** Toplam maliyet  
 
 Toplam maliyet:
 
@@ -96,9 +83,8 @@ ABC algoritması tarafından belirlenen bölgelerden geçildiğinde ek maliyet u
 
 Örneğin:
 
- Normal hücre maliyeti = 1
- 
- Cezalı hücre maliyeti = 5
+- Normal hücre maliyeti: 1  
+- Cezalı hücre maliyeti: 5 
 
 Bu sayede algoritma mümkün olduğunca riskli bölgelerden kaçınmaya çalışır.
 
@@ -108,9 +94,9 @@ Yol üzerindeki yön değişimleri ayrıca cezalandırılır.
 
 Böylece:
 
-Daha düzgün
-Daha akıcı
-İHA hareketlerine daha uygun
+- Daha düzgün  
+- Daha akıcı  
+- İHA hareketlerine uygun 
 
 rotalar elde edilir.
 
@@ -124,13 +110,11 @@ Haritalar harici bir metin dosyasından okunmaktadır.
 
 Değerlerin anlamları:
 
-**Değer	Açıklama**
-
- **0**	Geçilebilir Alan
- 
- **1**	Engel
-
- **2**	Yasak veya Özel Bölge
+| Değer | Açıklama |
+|------|----------|
+| 0 | Geçilebilir alan |
+| 1 | Engel |
+| 2 | Özel / yasak bölge |
 
 ## Algoritmanın Çalışma Mantığı
 ### 1. Haritanın Yüklenmesi
@@ -141,11 +125,9 @@ Harita dosyası okunur ve matris yapısına dönüştürülür.
 
 Her hücre için:
 
- -Konum bilgisi
- 
- -Maliyet değerleri
- 
- -Ebeveyn düğüm
+- Konum bilgisi  
+- Maliyet değerleri  
+- Ebeveyn düğüm  
 
 oluşturulur.
 
@@ -182,30 +164,31 @@ pip install numpy matplotlib
 
 Başlangıç ve hedef koordinatlarını belirleyin:
 
- start = (2, 35)
- 
- goal = (4, 45)
+```python
+start = (2, 35)
+goal = (4, 45)
+```
 
 Algoritmayı çalıştırın:
 
-**pathfinder =** HybridPathFinder(
+```python
+pathfinder = HybridPathFinder(
     txt_file_path,
     start,
     goal
 )
 
-**optimal_path =** pathfinder.find_optimal_path()
+optimal_path = pathfinder.find_optimal_path()
+```
+
 ### 📈 Çıktılar
 
 Program çalıştırıldığında:
 
- * En uygun rota hesaplanır.
- 
- * Yol koordinatları oluşturulur.
- 
- * Yol harita üzerinde çizilir.
- 
- Sonuç **map_visual.png** dosyasına kaydedilir.
+- En uygun rota hesaplanır  
+- Yol koordinatları oluşturulur  
+- Harita üzerinde görselleştirilir  
+- Sonuç `map_visual.png` olarak kaydedilir
 
 <img width="639" height="541" alt="mapvisual" src="https://github.com/user-attachments/assets/5f83f6e4-e498-4e60-b20a-5c798a8a26bf" />
 
